@@ -4,9 +4,11 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { LikeEntity } from './Like.entity';
 
 @Entity('user')
 export class UserEntity {
@@ -24,6 +26,9 @@ export class UserEntity {
 
   @Column({ type: 'enum', enum: UserRoles, default: UserRoles.USER })
   roles: UserRoles;
+
+  @OneToMany(() => LikeEntity, (like) => like.user)
+  likes: LikeEntity[]
 
   @BeforeInsert()
   @BeforeUpdate()

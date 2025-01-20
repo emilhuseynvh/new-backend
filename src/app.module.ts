@@ -5,6 +5,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { NewsModule } from './modules/news/news.module';
 import { CategoryModule } from './modules/category/category.module';
+import { LikeModule } from './modules/like/like.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CategoryModule } from './modules/category/category.module';
     AuthModule,
     NewsModule,
     CategoryModule,
+    LikeModule
   ],
   controllers: [],
   providers: [],

@@ -6,10 +6,12 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { CategoryEntity } from './Category.entity';
+import { LikeEntity } from './Like.entity';
 
 @Entity('news')
 export class NewsEntity extends BaseEntity {
@@ -45,6 +47,9 @@ export class NewsEntity extends BaseEntity {
 
   @ManyToOne(() => CategoryEntity, (category) => category.news)
   category: CategoryEntity;
+
+  @OneToMany(() => LikeEntity, (like) => like.news)
+  likes: LikeEntity[];
 
   @BeforeInsert()
   @BeforeUpdate()
